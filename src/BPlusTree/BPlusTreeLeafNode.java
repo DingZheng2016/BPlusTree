@@ -6,19 +6,9 @@ public class BPlusTreeLeafNode extends BPlusTreeNode {
         super(true);
     }
 
-    public BPlusTreeNode search(int value){
-        System.out.println("search in leaf node");
-        return null;
-    }
-
     public BPlusTreeNode insert(int value){
 
-        int i = 0;
-
-        for(i = 0; i < this.keyNum; ++i){
-            if(value < this.keys.get(i))
-                break;
-        }
+        int i = this.search(value);
 
         this.keys.add(i, value);
         ++this.keyNum;
@@ -30,14 +20,7 @@ public class BPlusTreeLeafNode extends BPlusTreeNode {
     }
 
     public BPlusTreeNode delete(int value){
-        int i;
-
-        for(i = 0; i < this.keyNum; ++i){
-            if(value == this.keys.get(i))
-                break;
-        }
-
-        assert i != this.keyNum;
+        int i = this.search(value) - 1;
 
         this.keys.remove(i);
         --this.keyNum;

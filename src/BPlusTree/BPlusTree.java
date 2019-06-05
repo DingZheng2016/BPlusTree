@@ -3,7 +3,7 @@ package BPlusTree;
 public class BPlusTree {
 
     private BPlusTreeNode root;
-    public static int M = 30;
+    public static int M = 1000;
 
     public BPlusTree(){
         this.root = new BPlusTreeLeafNode();
@@ -28,9 +28,9 @@ public class BPlusTree {
         }
     }
 
-    public void update(int oldvalue, int newvalue){
-        this.delete(oldvalue);
-        this.insert(newvalue);
+    public void update(int oldValue, int newValue){
+        this.delete(oldValue);
+        this.insert(newValue);
     }
 
     public void print(){
@@ -54,7 +54,7 @@ public class BPlusTree {
 
         BPlusTreeNode node = this.root;
         while (!node.isLeafNode) {
-            node = node.search(value);
+            node = node.pointers.get(node.search(value));
         }
         return (BPlusTreeLeafNode)node;
     }

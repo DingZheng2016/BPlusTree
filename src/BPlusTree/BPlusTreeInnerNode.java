@@ -8,22 +8,9 @@ public class BPlusTreeInnerNode extends BPlusTreeNode {
         super(false);
     }
 
-    public BPlusTreeNode search(int value){
-        for(int i = 0; i < this.keyNum; ++i){
-            if(value < this.keys.get(i))
-                return this.pointers.get(i);
-        }
-        return this.pointers.get(this.keyNum);
-    }
-
     public BPlusTreeNode insert(int value, BPlusTreeNode node){
 
-        int i;
-
-        for(i = 0; i < this.keyNum; ++i){
-            if(value < this.keys.get(i))
-                break;
-        }
+        int i = this.search(value);
 
         this.keys.add(i, value);
         this.pointers.add(i + 1, node);

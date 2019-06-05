@@ -32,7 +32,7 @@ public class test {
         }
         */
 
-
+        long start = System.nanoTime();
 
         int tot = 1000000;
 
@@ -134,6 +134,10 @@ public class test {
         for(int i = 0; i < arr.size(); ++i){
             bpt.delete(arr.get(i) + tot);
         }
+
+        long end = System.nanoTime();
+
+        System.out.println((end-start)/ 1000000000.0);
 
 
 

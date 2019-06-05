@@ -25,5 +25,30 @@ public abstract class BPlusTreeNode {
 
     abstract public BPlusTreeNode split();
 
-    abstract public BPlusTreeNode search(int value);
+    public int search(int value){
+
+
+        if(this.keyNum < 100){
+            int i;
+            for(i = 0; i < this.keyNum; ++i) {
+                if (this.keys.get(i) > value)
+                    break;
+            }
+            return i;
+        }
+
+        int left = 0, right = this.keyNum, mid;
+        while(true){
+            mid = (left + right) / 2;
+            if(this.keys.get(mid) > value){
+                if(mid == 0 || this.keys.get(mid - 1) <= value)
+                    return mid;
+                right = mid;
+            }else{
+                if(mid == this.keyNum - 1)
+                    return this.keyNum;
+                left = mid + 1;
+            }
+        }
+    }
 }
