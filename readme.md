@@ -1,2 +1,4 @@
-# A Simple Database Written in Java
+# A B+ Tree Written in Java
 
+* Support use-defined M
+* Only in memory
